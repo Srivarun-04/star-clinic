@@ -10,7 +10,7 @@ const navLinks = [
   { name: "Treatments", href: "#treatments" },
   { name: "About", href: "#about" },
   { name: "Why Choose Star", href: "#why-star" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact & Location", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -19,7 +19,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      setIsScrolled(window.scrollY > 16);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -50,10 +50,11 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${isScrolled
-        ? "bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E8E2D9] shadow-xs py-3"
-        : "bg-[#FDFBF7] border-b border-[#E8E2D9]/70 py-4 sm:py-5"
-        }`}
+      className={`sticky top-0 z-40 w-full transition-all duration-200 ${
+        isScrolled
+          ? "bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#E8E2D9] shadow-xs py-3"
+          : "bg-[#FDFBF7] border-b border-[#E8E2D9]/70 py-3.5 sm:py-4 lg:py-5"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -64,7 +65,7 @@ export function Navbar() {
             aria-label="Star Chiropractic and Physiotherapy Center homepage"
           >
             {/* Visual Monogram Badge */}
-            <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#0A2118] text-[#FDFBF7] flex items-center justify-center shrink-0 border border-[#123327] transition-transform duration-300 group-hover:scale-105">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#0A2118] text-[#FDFBF7] flex items-center justify-center shrink-0 border border-[#123327] transition-transform duration-200 group-hover:scale-105">
               <span className="font-serif text-lg sm:text-xl font-bold tracking-wider">
                 S
               </span>
@@ -88,13 +89,13 @@ export function Navbar() {
           {/* Desktop Navigation Links */}
           <nav
             aria-label="Main navigation"
-            className="hidden md:flex items-center gap-8 lg:gap-10"
+            className="hidden md:flex items-center gap-7 lg:gap-9"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-[#12231C] hover:text-[#0A2118] relative py-1 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#0A2118] hover:after:w-full after:transition-all after:duration-200"
+                className="text-sm font-medium text-[#12231C] hover:text-[#0A2118] relative py-1 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#0A2118] hover:after:w-full after:transition-all after:duration-200 focus-visible:ring-2 focus-visible:ring-[#0A2118]"
               >
                 {link.name}
               </Link>
@@ -136,14 +137,14 @@ export function Navbar() {
       {isOpen && (
         <div
           id="mobile-navigation-menu"
-          className="md:hidden fixed inset-x-0 top-[76px] bottom-0 z-50 bg-black/50 backdrop-blur-xs transition-opacity duration-200"
+          className="md:hidden fixed inset-x-0 top-full bottom-0 z-50 bg-black/60 backdrop-blur-xs transition-opacity duration-200"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-[#FDFBF7] border-b border-[#E8E2D9] px-6 py-8 shadow-2xl max-h-[calc(100vh-80px)] overflow-y-auto"
+            className="bg-[#FDFBF7] border-b border-[#E8E2D9] px-6 py-6 sm:py-8 shadow-2xl max-h-[calc(100vh-80px)] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-1">
               <span className="text-[10px] uppercase font-bold tracking-widest text-[#798C82] pb-2 border-b border-[#E8E2D9]">
                 Menu Directory
               </span>
@@ -162,11 +163,11 @@ export function Navbar() {
             </div>
 
             {/* Mobile Location Badge & Call to Action */}
-            <div className="mt-8 pt-6 border-t border-[#E8E2D9] space-y-4">
+            <div className="mt-6 pt-5 border-t border-[#E8E2D9] space-y-4">
               <div className="p-4 bg-[#F4EFEA] border border-[#E8E2D9] text-xs">
                 <div className="flex items-center gap-1.5 font-bold text-[#0A2118] uppercase tracking-wider">
                   <MapPin className="w-3.5 h-3.5 text-[#1C4737]" />
-                  <span>Dilsukhnagar</span>
+                  <span>Amla Nagar, Dilsukhnagar</span>
                 </div>
                 <p className="mt-1 text-[#4B5E55]">
                   Star Chiropractic &amp; Physiotherapy Center · Hyderabad
